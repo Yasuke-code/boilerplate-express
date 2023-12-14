@@ -12,7 +12,11 @@ app.get("/",function(req, res) {
 
 // 5
 app.get("/json",(req, res)=>{
- res.json({"message":"Hello json"})
+ if(prodess.env.MESSAGE_STYLE=="uppercase"){
+  res.json({"MESSAGE":"HELLO JSON"})
+ }else{
+  res.json({"message":"Hello json"})
+ }
 })
 
 
