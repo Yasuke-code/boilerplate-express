@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 require('dotenv').config();
-var bodyParser =require('body-parser');
+let bodyParser =require('body-parser');
 
 console.log("server restarted");  //#1//
 
@@ -14,10 +14,9 @@ app.use((req, res,next)=>{
     console.log(req.method + " " +req.path + " "+"-"+" " + req.ip)
     next();
 });
-app.use((req, res, next)=>{
-    bodyParser.urlencoded({extended: false});
-    next();
-});
+app.use(
+    bodyParser.urlencoded({extended: false})
+    );
 
 app.get("/",function(req, res) {
  res.sendFile(__dirname + '/views/index.html' );
@@ -51,6 +50,9 @@ app.get("/name",(req, res)=>{
     res.json({"name":req.query.first+ " " +req.query.last})
     console.log(req.query);
 });
+app.post("/name",(req, res)=>{
+    res.json({"name":req.body.first+ " " +req.body.last})
+})
 // .get((req, res)=>{
 //     res.json({"name": 'firstname lsetname'})
 // }).post()
@@ -88,3 +90,4 @@ app.get("/name",(req, res)=>{
 
 
  module.exports = app;
+ 
