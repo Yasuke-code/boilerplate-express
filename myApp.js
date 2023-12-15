@@ -16,7 +16,6 @@ app.use((req, res,next)=>{
 });
 app.use((req, res, next)=>{
     bodyParser.urlencoded({extended: false});
-    console.log(bodyParser);
     next();
 });
 
@@ -55,11 +54,6 @@ app.get("/name",(req, res)=>{
 // .get((req, res)=>{
 //     res.json({"name": 'firstname lsetname'})
 // }).post()
-
-
-
-
-
 
 
 
